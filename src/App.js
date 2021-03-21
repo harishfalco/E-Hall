@@ -1,18 +1,20 @@
-import {BrowserRouter as Router , Route ,Switch , Link} from 'react-router-dom'
+import {BrowserRouter as Router , Route ,Switch} from 'react-router-dom'
 import './App.css';
 import Places from './components/Homepage/Places'
 import Login from'./components/Login'
 import Register from './components/Register'
 import HallDetails from './components/Halls/HallDetails'
+import Navbar from './components/Homepage/Navbar'
 function App() {
   return (
 
     <Router>
+      <Navbar />
       <Switch>
-        <Route path="/" component={Login} exact  />
-        <Route path="/reg" component={Register}  />
-        <Route path="/places" component={Places}  />
-        <Route path="/halls" component={HallDetails}  />
+        <Route exact  path="/login" component={Login}  />
+        <Route exact  path="/reg" component={Register}  />
+        <Route exact  path="/places" component={Places}  />
+        <Route exact  path="/halls" component={HallDetails}  />
       </Switch>
     </Router>
 

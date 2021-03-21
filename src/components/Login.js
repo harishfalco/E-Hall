@@ -86,7 +86,7 @@ const Login = () => {
             <CardActions>
                 <Typography>
                     Haven't Registered yet?
-                <Link href="#"  style={{fontSize:'16px',padding:'8px'}}>
+                <Link to="/reg"  style={{fontSize:'16px',padding:'8px' , cursor:'pointer'}}>
                     signup
                 </Link>
                 </Typography>

@@ -7,6 +7,7 @@ import {List , ListItem , ListItemText, IconButton , Container} from "@material-
 import {makeStyles} from '@material-ui/core' 
 import {Button } from '@material-ui/core'
 import Login from '../Login'
+import {Link} from 'react-router-dom';
 const useStyles = makeStyles({
     navDisplayFlex: {
       display: `flex`,
@@ -26,9 +27,9 @@ const useStyles = makeStyles({
   });
   
 const navLinks = [
-        { title: `Home`, path: `/home` },
-        { title: `Post Halls`, path: `/Login` },
-        { title: `Contact Us`, path: `/login` }
+        { title: `Home`, path: `/places` },
+        { title: `Halls`, path: `/halls` },
+        { title: `Login`, path: `/login` }
         // { title: `Login`, path: `/` }
       ]
 
@@ -42,16 +43,16 @@ const Navbar = () => {
                    <List component="nav" className={classes.navDisplayFlex}>
                        {
                            navLinks.map(({title,path})=>(
-                               <a href={path} key={title} className={classes.linkText} >
+                               <Link to={path} key={title} className={classes.linkText} >
                                <ListItem button>
                                    <ListItemText primary={title}  />
                                </ListItem>
-                               </a>
+                               </Link>
                            ))
                        }  
                    </List>
                 </Container>
-                <Button color="filled" className={classes.btnStyle}>Login</Button>
+                {/* <Button color="filled" className={classes.btnStyle}>Login</Button> */}
             </Toolbar>
         </AppBar>
         </div>
