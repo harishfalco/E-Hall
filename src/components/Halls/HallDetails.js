@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import hallphoto from './hallphoto.webp'
 import './HallDetails.css'
 import SimpleImageSlider from "react-simple-image-slider";
-
+import {Link} from 'react-router-dom'
 const details = [
     {
         name:"XYZ Marriage Hall",
@@ -14,6 +14,7 @@ const details = [
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
+        url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove",
     },
     {
         name:"ABC  Marriage Hall",
@@ -23,6 +24,7 @@ const details = [
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
+        url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021"
     },
     {
         name:"AAA Marriage Hall",
@@ -32,6 +34,7 @@ const details = [
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
+        url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021"
     },
     {
         name:"Simple name",
@@ -41,12 +44,13 @@ const details = [
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
+        url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021"
     },
 ]
 
 const images = [
     { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
-    { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
+    { url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021" },
     { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
     { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
   ];
@@ -59,37 +63,33 @@ const HallDetails = () => {
                     details.map((e)=>(
                         <div id="container">	
                                 <div className="product-details">
+                                    {/* product name */}
                                 <h1>{e.name}</h1>
-                                {/* <span class="hint-star star">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </span> */}
+                                {/* Product testing section */}
                                     <p className="information">{e.description}</p>
+                                    {/* Button */}
                             <div className="control">
                                 <button className="btn">
                                     <span className="price">{e.cost}/perday</span>
-                                    <span className="shopping-cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                                    <span className="buy">View Details</span>
+                                    <Link to="/onehall" className="buy"><span >More Details</span></Link>
                                 </button>
                             </div>        
                             </div>
+                            {/* product image section */}
                             <div className="product-image">
-                                 <img src={hallphoto} alt="Omar Dsoky"  id="hall-image"/> 
-                                 <button>hi</button>
-                            <div className="info">
-                                <h2>The Description</h2>
-                                <ul>
-                                    <li><strong>Name:     </strong> {e.name}</li>
-                                    <li><strong>Owner:    </strong>{e.owner}</li>
-                                    <li><strong>District:</strong>{e.district}</li>
-                                    <li><strong>State:     </strong>{e.state}</li>
-                                    <li><strong>Fee :      </strong>{e.cost}/perday</li>
-                                    <li><strong>Features: </strong>{e.features}</li>
-                                </ul>
-                            </div>
+                                 <img src={e.url} alt="Omar Dsoky"  id="hall-image"/> 
+                                 {/* the hover description section */}
+                                <div className="info">
+                                    <h2>The Description</h2>
+                                    <ul>
+                                        <li><strong>Name:     </strong> {e.name}</li>
+                                        <li><strong>Owner:    </strong>{e.owner}</li>
+                                        <li><strong>District:</strong>{e.district}</li>
+                                        <li><strong>State:     </strong>{e.state}</li>
+                                        <li><strong>Fee :      </strong>{e.cost}/perday</li>
+                                        <li><strong>Features: </strong>{e.features}</li>
+                                    </ul>
+                                </div>
                             </div>
                 </div>
                          

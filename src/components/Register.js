@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button'
 import { Typography } from '@material-ui/core';
-import Link from '@material-ui/core/Link'
+import {Link} from 'react-router-dom'
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import Login from  './Login'
 const useStyle = makeStyles((theme)=>({
