@@ -8,38 +8,52 @@ import {makeStyles} from '@material-ui/core'
 import {Button } from '@material-ui/core'
 import Login from '../Login'
 import {Link} from 'react-router-dom';
+import {useState} from 'react'
+import ImageShow from './ImageShow'
+import HomePage from './HomePage'
+
 const useStyles = makeStyles({
+    container :{
+      backgroundColor:'#faf3e0'
+    },
     navDisplayFlex: {
       display: `flex`,
-      justifyContent: `space-between`
+      justifyContent: `space-around`
     },
     linkText: {
       textDecoration: `none`,
       textTransform: `uppercase`,
-      color: `white`
+      color: `#1e212d`,
+       '&:hover' :{
+           padding:'0px 4px',
+           border:'none',
+           color:'violet'
+       }
     },
     btnStyle :{
         display :'flex',
         justifyContent:'flex-end',
-        marginBottom:'10px',
-        border:'white'
+        margin:'0px 4px 0px 30px',
+        border:'white',
+        color:''
     }
   });
   
 const navLinks = [
-        { title: `Home`, path: `/places` },
+        { title: `Home`, path: `/home` },
         { title: `Halls`, path: `/halls` },
-        { title: `Login`, path: `/login` }
+        { title: `Contact Us`, path: `/login` }
         // { title: `Login`, path: `/` }
       ]
 
 const Navbar = () => {
     const classes = useStyles();
+    const [status, setStatus] = useState('logout');
     return (
         <div>
-            <AppBar position="static">
-            <Toolbar>
-                <Container maxWidth="sm">   
+            <AppBar position="static" className={classes.container}>
+            <Toolbar> 
+                <Container maxWidth="sm" >   
                    <List component="nav" className={classes.navDisplayFlex}>
                        {
                            navLinks.map(({title,path})=>(
@@ -49,10 +63,10 @@ const Navbar = () => {
                                </ListItem>
                                </Link>
                            ))
-                       }  
+                       }
+                       <Button  className={classes.btnStyle} onClick={()=>setStatus("login")}>{status}</Button>  
                    </List>
                 </Container>
-                {/* <Button color="filled" className={classes.btnStyle}>Login</Button> */}
             </Toolbar>
         </AppBar>
         </div>

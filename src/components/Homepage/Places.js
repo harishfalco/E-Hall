@@ -8,72 +8,107 @@ import chennai from '../img/chennai.jpg';
 import mumbai from '../img/mumbai.webp';
 import delhi from '../img/delhi.webp';
 import hyderabad from '../img/hyderabad.jpg';
+import hall from '../Halls/hallphoto.webp'
+import {Link} from 'react-router-dom'
+import styled from "styled-components";
+
+
+// styling material-UI components
+// =============================
 const styles  = makeStyles((theme)=>(
     {
         root:{
-            maxWidth:300,
+            width:'250px',
+            margin:'0px 20px 25px 30px',
+            display:'inline-block'
         },
         media:{
-            height: 0,
+            height:'0px',
             paddingTop: '56.25%',
+            transition: 'transform .5s ease',
+            '&:hover':{
+                transform: 'scale(1.5)',
+            }
         },
         location:{
-            color:red,
-            paddingLeft:'10px'
-        }
+            color:'black',
+            padding:'10px 50px 5px 50px',
+            textDecoration:'none',
+            '&:hover' :{
+               color:'violet',
+               textDecoration:'underline'
+            }
+        },
+        link:{
+            '&:hover':{
+                textDecoration:'none',
+            }
+        },
     }
 ))
 
 
 
 const Places = () => {
+
+    // array of places and images
+    // =========================
+
     const placeDetails = [
         {
             img:'../img/mumbai.webp',
-            name:'MUMBAI'
+            name:'Trichy'
         },
         {
             img:'../img/delhi.webp',
-            name:'DELHI' 
+            name:'Coimbatore' 
         },
         {
             img:'../img/hyderabad.jpg',
-            name:'HYDERABAD' 
+            name:'Chennai' 
         },
         {
             img:'../img/chennai.jpg',
-            name:'CHENNAI' 
+            name:'Madurai' 
         }
     ]
     const classes = styles();
-    console.log(placeDetails[0].img)
     return (
-        <div>
+
+        // component definition
+        // ====================
+
+       <Container>
             {
             placeDetails.map(({img,name})=>(
                 <Card className={classes.root}>
-                <img
-                src={img}
-                className={classes.media}
-                alt="no img"
-                />
+                  <Link to="/halls" title="hello" >
+                        <img
+                        src={hall}
+                        className={classes.media}
+                        alt="no img"
+                        />
+                   </Link>
                  <CardContent>
-                    <h3 className={classes.location}>
-                        {name}
-                    </h3>
+                    <Link to="/halls" title="hello" className={classes.link}>
+                        <h3 className={classes.location}>
+                            {name}
+                        </h3>
+                    </Link>
                  </CardContent>
-              </Card>
-            
+                </Card>
             ))
-
              }
-            
-        
-                <div>
-                    
-                </div>
-        </div>
+       </Container>
     )
 }
 
 export default Places
+
+// const Container = styled.div`
+// margin:0px 20px;
+// `;
+
+const Container = styled.div
+`margin:0px 50px;
+`;
