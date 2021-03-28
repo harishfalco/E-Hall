@@ -9,13 +9,14 @@ import IndividualHall from './components/Halls/IndividualHall'
 import ImageShow from './components/Homepage/ImageShow'
 import HomePage from './components/Homepage/HomePage'
 import Footer from './components/Homepage/Footer'
+import PaymentForm from './components/Halls/PaymentForm'
 function App() {
   return (
 
     <Router>
       <Navbar />
       <Switch>
-      <Route exact  path="/home" component={HomePage}  />
+      <Route exact  path="/" component={HomePage}  />
         <Route exact  path="/Login" component={Login}  />
         <Route exact  path="/reg" component={Register}  />
         <Route exact  path="/places" component={Places}  />

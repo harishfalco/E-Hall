@@ -2,9 +2,14 @@ import React from 'react';
 import hallphoto from './hallphoto.webp'
 import styled from 'styled-components'
 import ContactForm from './ContactForm'
+import PaymentForm from './PaymentForm'
+import Radio from '@material-ui/core/Radio';
 
 const IndividualHall = ()=>{
+    const [Form, setForm] = React.useState('');
+    
     return(
+        <div>
         <div>
            <Container>
                <ImageText>
@@ -21,12 +26,33 @@ const IndividualHall = ()=>{
                    </Text>
                </ImageText>
                <Form>
-                  <h1>Have a query leave a message here</h1>
-                  <ContactForm /> 
+                        <div>
+                        <h1>user selected :{ Form}</h1>
+                        <label>Book a hall </label>
+                    <Radio
+                        checked={Form === "book"}
+                        onChange={(e)=>(setForm(e.target.value))}
+                        value="book"
+                    />
+                    <label>Contact Hall owner </label>
+                    <Radio
+                        checked={Form === "contact"}
+                        onChange={(e)=>(setForm(e.target.value))}
+                        value="contact"
+                    />
+                    </div>
+                    <div>
+                        { 
+                        Form=="contact" 
+                        ? 
+                        <ContactForm /> : 
+                        <PaymentForm />
+                        }
+                    </div>
                </Form>
-              
            </Container>
         </div>
+    </div>
     )
 }
 

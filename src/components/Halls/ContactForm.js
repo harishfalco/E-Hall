@@ -26,6 +26,7 @@ const ContactForm = () =>{
     const classes = useStyle();
     return(
       <>
+       <h3 style={{}}>Have a query , leave a message here</h3> 
          <FormControl autocomplete="on">
                     <TextField  
                         label="Name" 

@@ -14,7 +14,7 @@ const details = [
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
-        url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove",
+        url: "/hallImages/hall1.PNG",
     },
     {
         name:"ABC  Marriage Hall",
@@ -24,7 +24,7 @@ const details = [
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
-        url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021"
+        url: "/hallImages/hall2.PNG",
     },
     {
         name:"AAA Marriage Hall",
@@ -34,26 +34,26 @@ const details = [
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
-        url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021"
+        url: "/hallImages/hall3.PNG",
     },
     {
         name:"Simple name",
-        description:" wedding",
+        description:" wedding nice wbekbfibskfbasbkasbkbsabfABajbfjbJSABkjsabkABBFHBFKAHSBFKHASBFHSBAKHFBASKBCKBkbKBkbkdbskdbgsvjaaaaaaaaaaaaaaaaaaaaaaa",
         cost:"33,000",
         owner:"harish",
         district:"CBE",
         state : "Tamil Nadu",
         Features :" AC Hall",
-        url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021"
+        url: "/hallImages/hall4.PNG",
     },
 ]
 
-const images = [
-    { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
-    { url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021" },
-    { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
-    { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
-  ];
+// const images = [
+//     { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
+//     { url: "https://www.shutterstock.com/image-photo/wedding-hall-520555021" },
+//     { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
+//     { url: "https://creativemarket.com/akerdesign/688444-Conference-Hall-018?u=ohlove" },
+//   ];
 
 const HallDetails = () => {
 
@@ -70,8 +70,9 @@ const HallDetails = () => {
                                     {/* Button */}
                             <div className="control">
                                 <button className="btn">
-                                    <span className="price">{e.cost}/perday</span>
-                                    <Link to="/onehall" className="buy"><span >More Details</span></Link>
+                                    {/* <span className="price">{e.cost}/perday</span> */}
+                                    <Link to="/onehall" ><span  className="buy">More details</span></Link>
+                                    
                                 </button>
                             </div>        
                             </div>

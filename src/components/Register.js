@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState , useEffect} from 'react'
 import TextField from '@material-ui/core/TextField';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,6 +11,7 @@ import { Typography } from '@material-ui/core';
 import {Link} from 'react-router-dom'
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import Login from  './Login'
+import Axios from 'axios'
 const useStyle = makeStyles((theme)=>({
     TextFeild:{
         margin: theme.spacing(2),
@@ -23,6 +24,11 @@ const useStyle = makeStyles((theme)=>({
 
 const Register = () => {
     const classes = useStyle();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [contact, setContact] = useState('');
+    const [password, setPassword] = useState('');
+    const [conPassword, setconPassword] = useState('');
     const card = {
         /* Center vertically and horizontally */
         boxShadow: '2px 4px 10px 4px black',
@@ -34,6 +40,19 @@ const Register = () => {
    const TitleMod = {
        fontSize:'20px',
        backGround:'blue'
+   }
+
+   const submitForm =()=>{
+       Axios.post("http://localhost:3001/api/insert",
+       {
+        name:name,
+        email:email,
+        contact:contact,
+        password:password,
+        conPassword:conPassword
+    }).then(()=>{
+        alert('inserted');
+    })
    }
 
     return (
@@ -55,6 +74,7 @@ const Register = () => {
                         type="text"
                         color="success" 
                         className={classes.TextFeild}
+                        onChange={(e)=>{setName(e.target.value)}}
                     />
                     <TextField  
                         label="email" 
@@ -62,6 +82,7 @@ const Register = () => {
                         type="email"
                         color="success" 
                         className={classes.TextFeild}
+                        onChange={(e)=>{setEmail(e.target.value)}}
                     />
                     <TextField  
                         label="Contact no" 
@@ -69,6 +90,7 @@ const Register = () => {
                         type="tel"
                         color="success" 
                         className={classes.TextFeild}
+                        onChange={(e)=>{setContact(e.target.value)}}
                     />
                     <TextField  
                         label="Password" 
@@ -76,17 +98,20 @@ const Register = () => {
                         type="password"
                         color="success" 
                         className={classes.TextFeild}
+                        onChange={(e)=>{setPassword(e.target.value)}}
                     />
                     <TextField  
                         label="Confrim Password" 
                         variant="filled"  
                         type="password" 
                         className={classes.TextFeild}
+                        onChange={(e)=>{setconPassword(e.target.value)}}
                     />
                     <Button 
                         variant="contained" 
                         color="primary"
                         className={classes.TextFeild}
+                        onClick = {submitForm}
                         >
                             REGISTER
                     </Button>

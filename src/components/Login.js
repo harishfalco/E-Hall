@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import { Typography } from '@material-ui/core';
 import {Link} from 'react-router-dom'
+import Axios from 'axios'
 // const useStyle = makeStyles(
 //     {
         
@@ -47,6 +48,24 @@ const Login = () => {
         margin:'auto',
         marginTop:'10%'
     }
+       
+    const [name , setName] = useState('');
+    const [password , setPassword] = useState('');
+    const [loginstatus, setloginstatus] = useState(true);
+    const login =()=>{
+        Axios.post("http://localhost:3001/login",
+        {
+         name:name,
+         password:password,
+     }).then((response)=>{
+         if(response.data.message){
+             setloginstatus(response.data.message)
+         }
+         else{
+            setloginstatus(response.data[0].name)
+         }
+     })
+    }
 
     return (
         <div style={card}>
@@ -59,25 +78,27 @@ const Login = () => {
                 title="Login to continue"
             />
             <CardContent  className="classes.FormControl" >
-                <FormControl autocomplete="on">
+                <FormControl >
                     <TextField  
                         label="UserName" 
                         variant="filled"  
                         type="text"
                         color="success" 
                         className={classes.TextFeild}
-                        autocomplete="on"
+                         onChange = {(e)=>{setName(e.target.value)}}
                     />
                     <TextField  
                         label="Password" 
                         variant="filled"  
                         type="password" 
                         className={classes.TextFeild}
+                        onChange = {(e)=>{setPassword(e.target.value)}}
                     />
                     <Button 
                         variant="contained" 
                         color="primary"
                         className={classes.TextFeild}
+                        onClick = {login}
                         >
                             LOGIN
                     </Button>
@@ -91,7 +112,10 @@ const Login = () => {
                 </Link>
                 </Typography>
             </CardActions>
-
+            <div>
+            <h1>Welcome bro , {loginstatus}</h1>
+            </div>
+           
         </div>
     )
 }
