@@ -57,11 +57,11 @@ const Places = () => {
     const placeDetails = [
         {
             img:'/img/delhi.webp',
-            name:'Trichy'
+            name:'Delhi'
         },
         {
             img:'/img/mumbai.webp',
-            name:'Coimbatore' 
+            name:'Mumbai' 
         },
         {
             img:'/img/hyderabad.jpg',
@@ -69,7 +69,7 @@ const Places = () => {
         },
         {
             img:'/img/chennai.jpg',
-            name:'Madurai' 
+            name:'Hyderabad' 
         }
     ]
     const classes = styles();

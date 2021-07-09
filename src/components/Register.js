@@ -24,6 +24,7 @@ const useStyle = makeStyles((theme)=>({
 
 const Register = () => {
     const classes = useStyle();
+    const [ showlog , setShowlog] = useState(false)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [contact, setContact] = useState('');
@@ -43,6 +44,7 @@ const Register = () => {
    }
 
    const submitForm =()=>{
+    setShowlog(true)
        Axios.post("http://localhost:3001/api/insert",
        {
         name:name,
@@ -50,13 +52,24 @@ const Register = () => {
         contact:contact,
         password:password,
         conPassword:conPassword
-    }).then(()=>{
-        alert('inserted');
+    }).then((response)=>{
+        // if(response.data.message){
+        //     alert(response.data.message)
+        // }else{
+            
+        //     alert('inserted');
+        // }
+    
     })
    }
-
+   const handleClick = ()=>{
+       setShowlog(true)
+   }
     return (
-        <div style={card}>
+        <div>
+        {
+            showlog ===false ?
+            <div style={card}>
             <CardHeader
                avatar={
                 <IconButton>
@@ -107,6 +120,7 @@ const Register = () => {
                         className={classes.TextFeild}
                         onChange={(e)=>{setconPassword(e.target.value)}}
                     />
+                   
                     <Button 
                         variant="contained" 
                         color="primary"
@@ -115,18 +129,24 @@ const Register = () => {
                         >
                             REGISTER
                     </Button>
+                    
+                    
                 </FormControl>
             </CardContent>
             <CardActions>
                 <Typography style={{paddingLeft:'50px'}}>
                     Alreday an User?
-                <Link to="/Login"  style={{fontSize:'16px',padding:'8px'}}>
+                <span onClick={handleClick} style={{fontSize:'16px',padding:'8px' ,color:'blue',cursor:'pointer' }}>
                     Login
-                </Link>
+                </span>
                 </Typography>
             </CardActions>
-
         </div>
+        :
+        <Login />
+
+        }
+      </div> 
     )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import hallphoto from './hallphoto.webp'
 import styled from 'styled-components'
 import ContactForm from './ContactForm'
@@ -6,7 +6,7 @@ import PaymentForm from './PaymentForm'
 import Radio from '@material-ui/core/Radio';
 
 const IndividualHall = ()=>{
-    const [Form, setForm] = React.useState('');
+    const [Form, setForm] = React.useState('book');
     
     return(
         <div>
@@ -25,31 +25,31 @@ const IndividualHall = ()=>{
                      <p>Ex quis laboris duis velit ad eu enim ex. Est qui occaecat aliqua magna ex eiusmod proident officia qui consectetur eiusmod reprehenderit dolore elit. Minim labore id do nostrud elit officia cillum pariatur.</p>
                    </Text>
                </ImageText>
-               <Form>
+                 <Form>
                         <div>
-                        <h1>user selected :{ Form}</h1>
+                        <h1>user selected :{Form}</h1>
                         <label>Book a hall </label>
                     <Radio
-                        checked={Form === "book"}
-                        onChange={(e)=>(setForm(e.target.value))}
-                        value="book"
+                        checked={Form === 'PaymentForm'}
+                        onChange={(e)=>{setForm(e.target.value)}}
+                        value='PaymentForm'
                     />
                     <label>Contact Hall owner </label>
                     <Radio
-                        checked={Form === "contact"}
-                        onChange={(e)=>(setForm(e.target.value))}
-                        value="contact"
+                        checked={Form === 'ContactForm'}
+                        onChange={(e)=>{setForm(e.target.value)}}
+                        value='ContactForm'
                     />
-                    </div>
+                    </div> 
                     <div>
                         { 
-                        Form=="contact" 
+                        Form==='ContactForm'
                         ? 
                         <ContactForm /> : 
                         <PaymentForm />
-                        }
+                         } 
                     </div>
-               </Form>
+                </Form>  
            </Container>
         </div>
     </div>

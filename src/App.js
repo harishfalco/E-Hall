@@ -10,20 +10,31 @@ import ImageShow from './components/Homepage/ImageShow'
 import HomePage from './components/Homepage/HomePage'
 import Footer from './components/Homepage/Footer'
 import PaymentForm from './components/Halls/PaymentForm'
+import React ,{useState , useContext} from 'react'
+import {Context} from './Context'
+import PostHall from './components/Halls/PostHall'
 function App() {
+   const [isloggedin, setIsloggedin] = useState(true)
   return (
-
     <Router>
-      <Navbar />
-      <Switch>
-      <Route exact  path="/" component={HomePage}  />
-        <Route exact  path="/Login" component={Login}  />
-        <Route exact  path="/reg" component={Register}  />
-        <Route exact  path="/places" component={Places}  />
-        <Route exact  path="/halls" component={HallDetails}  />
-        <Route exact  path="/onehall" component={IndividualHall}  />
-      </Switch>
-      <Footer />
+      {/* {
+        isloggedin ?
+        <Login setIsloggedin = {setIsloggedin} />:
+        <div setIsloggedin = {setIsloggedin}> */}
+            <Navbar setIsloggedin = {setIsloggedin} />
+            <Switch>
+                <Route exact  path="/login"  component={Login}  /> 
+                <Route exact  path="/" component={HomePage}  />
+                 <Route exact  path="/reg" component={Register}  />
+                <Route exact  path="/places" component={Places}  />
+                <Route exact  path="/halls" component={HallDetails}  />
+                <Route exact  path="/onehall" component={IndividualHall}  />
+                <Route exact  path="/posthall" component={PostHall}  />
+          </Switch>
+          <Footer />
+      {/* </div>
+      } */}
+     
     </Router>
 
   );

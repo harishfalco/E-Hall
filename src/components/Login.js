@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState , useContext} from 'react'
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -14,6 +14,8 @@ import Button from '@material-ui/core/Button'
 import { Typography } from '@material-ui/core';
 import {Link} from 'react-router-dom'
 import Axios from 'axios'
+import Register from './Register'
+// import {Context} from '../Context'
 // const useStyle = makeStyles(
 //     {
         
@@ -37,7 +39,7 @@ const useStyle = makeStyles((theme)=>({
         width: '25ch',
     }
 }));
-const Login = () => {
+const Login = (props) => {
     const classes = useStyle();
 
     const card = {
@@ -51,7 +53,8 @@ const Login = () => {
        
     const [name , setName] = useState('');
     const [password , setPassword] = useState('');
-    const [loginstatus, setloginstatus] = useState(true);
+    const [loginstatus, setloginstatus] = useState('');
+    const [showreg, setShowreg] = useState(false);
     const login =()=>{
         Axios.post("http://localhost:3001/login",
         {
@@ -59,16 +62,23 @@ const Login = () => {
          password:password,
      }).then((response)=>{
          if(response.data.message){
-             setloginstatus(response.data.message)
+             alert(response.data.message)
          }
          else{
             setloginstatus(response.data[0].name)
+            props.setIsloggedin(false);
          }
      })
     }
-
+    const handleSubmit = (e)=>{
+         setShowreg(true)
+    }
     return (
-        <div style={card}>
+        <div>
+        {
+            showreg === false ?
+
+            <div style={card}>
             <CardHeader
                avatar={
                 <IconButton>
@@ -107,16 +117,26 @@ const Login = () => {
             <CardActions>
                 <Typography>
                     Haven't Registered yet?
-                <Link to="/reg"  style={{fontSize:'16px',padding:'8px' , cursor:'pointer'}}>
-                    signup
-                </Link>
+                {/* <Link to="/reg"   */}
+                    <Button  style={{fontSize:'16px',padding:'8px' ,color:'blue',cursor:'pointer'}} onClick={handleSubmit} >
+                         signup
+                    </Button>
+                    
+                {/* </Link> */}
                 </Typography>
             </CardActions>
             <div>
-            <h1>Welcome bro , {loginstatus}</h1>
+            {/* <h1>Welcome bro , {loginstatus}</h1> */}
             </div>
            
         </div>
+        :
+        <div>
+            <Register />
+        </div>
+
+        }
+    </div>
     )
 }
 

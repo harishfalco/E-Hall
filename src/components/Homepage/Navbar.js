@@ -40,15 +40,18 @@ const useStyles = makeStyles({
   });
   
 const navLinks = [
-        { title: `Home`, path: `/home` },
+        { title: `Home`, path: `/` },
         { title: `Halls`, path: `/halls` },
-        { title: `Contact Us`, path: `/login` }
+        { title: `Contact Us`, path: `` }
         // { title: `Login`, path: `/` }
       ]
 
-const Navbar = () => {
+const Navbar = (props) => {
     const classes = useStyles();
     const [status, setStatus] = useState('logout');
+    const handleClick = ()=>{
+        // props.setIsloggedin(false);
+    }
     return (
         <div>
             <AppBar position="static" className={classes.container}>
@@ -64,7 +67,10 @@ const Navbar = () => {
                                </Link>
                            ))
                        }
-                       <Button  className={classes.btnStyle} onClick={()=>setStatus("login")}>{status}</Button>  
+                       <Link to="/login">
+                            <Button  className={classes.btnStyle} onClick={handleClick}>Login</Button>
+                       </Link>
+                         
                    </List>
                 </Container>
             </Toolbar>
